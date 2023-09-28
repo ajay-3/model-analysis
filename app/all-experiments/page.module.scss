@@ -6,7 +6,21 @@
 }
 
 .table-div {
-  @include col-center;
+  margin: 1vh 2vw;
+  border: 1px solid grey;
+  border-radius : 10px;
+  padding: 2vh 3vw
+}
+
+.table-bottom{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 4vh;
+
+  .button{
+    justify-content: center;
+  }
 }
 
 .table-header {
@@ -14,8 +28,27 @@
 }
 
 .button {
-  width: 10vh;
+  width: 12vh;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  font-weight: 300;
+  color: grey;
+  background: #fff;
+  border: 1px solid grey;
+  outline: none;
+  border-radius: 4px;
 }
 
-// .table {
-// }
+.table {
+  background-color: white;
+}
+
+.pagination{
+  span{
+    background-color: #ddf6ff;
+    color: #0ab3f0;
+    padding: 8px;
+  }
+}

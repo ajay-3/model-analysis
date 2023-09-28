@@ -200,14 +200,14 @@ const AllExperiments = () => {
           onChange={handleDateRangeChange}
         />
       </div>
-      <div className={styles["tablel-div"]}>
+      <div className={styles["table-div"]}>
         <div className={styles["table-header"]}>
           <h3>All Experiments</h3>
           <Button variant="secondary" className={styles["button"]}>
-            <span>Filter</span>
-            <span>
+            <div>Filter</div>
+            <div>
               <HiOutlineFilter />
-            </span>
+            </div>
           </Button>
         </div>
         <Table
@@ -215,6 +215,23 @@ const AllExperiments = () => {
           columns={Columns}
           data={experimentsTableData}
         />
+        <div className={styles["table-bottom"]}>
+          <Button variant="secondary" className={styles["button"]}>
+            <div>Previous</div>
+            {/* <div>
+              <HiOutlineFilter />
+            </div> */}
+          </Button>
+          <div className={styles["pagination"]}>
+             <span>1</span>
+          </div>
+          <Button variant="secondary" className={styles["button"]}>
+            <div>Next</div>
+            {/* <div>
+              <HiOutlineFilter />
+            </div> */}
+          </Button>
+        </div>
       </div>
     </div>
   );

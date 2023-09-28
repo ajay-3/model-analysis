@@ -6,6 +6,8 @@ import Slider from "@/src/components/universal/Slider";
 import { baseUrl, currentExperimentId } from "@/src/store/atoms/AllExperiments";
 import { useEffect, useState } from "react";
 import { useRecoilValue } from "recoil";
+import styles from "./page.module.scss";
+import Button from "@/src/components/universal/Button";
 
 const ModelTracking = () => {
   const curExperimentId = useRecoilValue(currentExperimentId);
@@ -14,7 +16,20 @@ const ModelTracking = () => {
   return (
     <div>
       <Header />
-      <div>Experiment ID:{curExperimentId}</div>
+      <div className={styles['modelTrackingHeader']}>
+        <div>
+          <h4>Experiment ID:</h4>
+          <span>{curExperimentId}</span>
+        </div>
+        <div className={styles["buttonAlignment"]}>
+            <Button variant="primary" className={styles["buttonPrimary"]}>
+              <div>Submit</div>
+            </Button>
+            <Button variant="secondary" className={styles["buttonSecondary"]}>
+              <div>Back</div>
+            </Button>
+          </div>
+      </div>
       <StageNavigation />
       {/* <Ring percentage={90} colour={"#0A7AFF"} title={"Real Accuracy"} />
       <Slider min={0} max={1} step={0.01} title="Tweak Threshold" /> */}

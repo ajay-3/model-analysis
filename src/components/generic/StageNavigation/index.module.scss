@@ -2,11 +2,53 @@
 @import "../../../styles/variables";
 
 .nav-container {
-  @include row-center;
+  margin: 0vh 5vw;
+  background-color: #f0f0f0;   
+   display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  // border: 1px solid black;
 }
 
 .container {
-  @include col-center;
+  padding: 2vh 1vw;
+  flex: 1;
+  flex-direction: column;
+  text-align: start;
+  cursor: pointer;
+  &:not(:last-child){
+    border-right: 1px solid #d4d4d4;
+  }
+
+  p{
+    &:first-child{
+      color: grey;
+    }
+  }
+
+  &.active p{
+    background-color: #daffc3;
+    color: #569f25;
+    font-weight: 700;
+
+
+  }
+
+  &.inProgress p{
+    background-color: #fff6e3;
+    color: #ffaa01;
+    font-weight: 700;
+  }
+}
+
+.active{
+  background-color: #daffc3;
+  color: #569f25;
+}
+
+.inProgress{
+  background-color: #fff6e3;
+  color: #ffaa01;
 }
 
 .success {

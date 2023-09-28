@@ -1,0 +1,31 @@
+.modelTrackingHeader{
+  padding: 2vh 6vw;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+    .buttonAlignment{
+        display: flex;
+
+        .buttonPrimary{
+            background-color: #006aff;
+            color: #fff;
+            padding: 6px 20px;
+            margin-right: 6%;
+            outline: none;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+   
+       .buttonSecondary{
+           background-color: #fff;
+           color: #000;
+           padding: 6px 20px;
+           outline: none;
+           border: 1px solid grey;
+           border-radius: 6px;
+           cursor: pointer;
+        }
+    }
+}

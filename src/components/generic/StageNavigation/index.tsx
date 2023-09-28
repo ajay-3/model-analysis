@@ -50,9 +50,9 @@ const StageNavigation = () => {
   return (
     <div className={styles["nav-container"]}>
       {parentStages.map((stage_id: string) => (
-        <div key={stage_id} className={styles["container"]}>
-          <span>Step {Stages[stage_id].step}</span>
-          <span>{Stages[stage_id].title}</span>
+        <div key={stage_id} className={`${styles["container"]}`}>
+          <p>Step {Stages[stage_id].step}</p>
+          <p>{Stages[stage_id].title}</p>
         </div>
       ))}
     </div>

@@ -1,0 +1,21 @@
+@import "../../src/styles/mixins";
+
+.selection-header {
+  @include row-center;
+  padding: 2vh 5vw;
+}
+
+.table-div {
+  @include col-center;
+}
+
+.table-header {
+  @include row-center;
+}
+
+.button {
+  width: 10vh;
+}
+
+// .table {
+// }

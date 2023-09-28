@@ -1,0 +1,16 @@
+@import "../../../styles/mixins";
+@import "../../../styles/variables";
+
+.logo {
+  @include row-center;
+  height: 5vh;
+}
+
+.logo-text {
+  font-family: $font;
+  font-size: x-large;
+  //   background-color: white;
+  color: $logo-color;
+  padding-bottom: 0.5vh;
+  //   padding: 0;
+}

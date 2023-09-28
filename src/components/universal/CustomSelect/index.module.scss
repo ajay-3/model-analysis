@@ -1,0 +1,100 @@
+@import "../../../styles/variables";
+@import "../../../styles/mixins";
+
+@mixin label-span {
+  font-size: 0.6rem;
+  z-index: 1;
+  background-color: #fff;
+  padding: 0 2px;
+}
+.custom-select {
+  position: relative;
+  min-width: 15vw;
+  max-width: 18vw;
+  min-height: 6vh;
+}
+
+.label {
+  position: absolute;
+  width: 100%;
+  height: 6vh;
+  @include row-center;
+  border: 1px solid $label-top-color;
+  font-size: 12px;
+  padding: 2px;
+  padding-left: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.parent-selected-span {
+  @include col-center;
+  align-items: center;
+}
+
+.child-label-span {
+  @include label-span;
+  transform: translateY(-175%);
+}
+
+.child-option-span {
+  position: absolute;
+  left: 0;
+  padding-left: 10px;
+  width: 100%;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.focused {
+  transform: translateY(-130%);
+  font-size: 0.6rem;
+  z-index: 1;
+  background-color: #fff;
+  padding: 2px;
+  transition: all 0.3s ease-in-out;
+}
+
+.options {
+  position: absolute;
+  list-style-type: none;
+  padding-left: 0;
+  padding: 2px;
+  // margin-top: 35px;
+  top: 100%;
+  width: 100%;
+  max-height: 90px;
+  overflow-y: auto;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  display: none;
+  transition: display 0.5s ease;
+}
+
+.open {
+  display: block;
+}
+
+.option {
+  padding: 5px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #f0f0f0;
+    border-radius: 5px;
+  }
+}
+
+.down-icon {
+  width: 20px;
+  height: 20px;
+  color: $icons-color;
+  padding-top: 4px;
+  transition: transform 0.3s ease-in-out;
+}
+
+.down-icon-focused {
+  transform: rotate(180deg);
+}

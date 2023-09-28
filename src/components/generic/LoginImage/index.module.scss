@@ -1,0 +1,50 @@
+@import "../../../styles/mixins";
+@import "../../../styles/variables";
+
+@mixin text-mixin() {
+  text-align: center;
+  color: #ffffff;
+  font-family: $font;
+  font-weight: 600;
+  word-wrap: break-word;
+}
+
+.parent {
+  @include col-center;
+  width: 50%;
+  height: 100%;
+  background-color: #0778b4;
+}
+
+.images-div {
+  position: relative;
+  background-color: red;
+  width: 575px;
+}
+
+.statistics {
+  position: absolute;
+  margin-top: 150px;
+}
+
+.order {
+  position: absolute;
+  right: 0;
+}
+
+.welcome {
+  @include text-mixin;
+  padding-top: 5vh;
+  font-size: larger;
+  margin-bottom: 0;
+}
+
+.sign {
+  @include text-mixin;
+  font-size: medium;
+  margin-top: 2vh;
+}
+
+.text {
+  margin-top: 50vh;
+}

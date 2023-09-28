@@ -1,0 +1,33 @@
+@import "../../../styles/mixins";
+@import "../../../styles/variables";
+
+@mixin text-mixin() {
+  text-align: center;
+  font-family: $font;
+  word-wrap: break-word;
+  font-weight: 700;
+  margin: 0 2vw;
+  padding: 1.98vh 0;
+}
+
+.nav {
+  height: 100%;
+}
+
+.headers {
+  @include row-center;
+  list-style-type: none;
+  // height: 100%;
+}
+
+.header {
+  @include text-mixin;
+  color: #9fa5b3;
+  border-bottom: 4px solid #ffffff;
+}
+
+.active {
+  @include text-mixin;
+  color: #16161d;
+  border-bottom: 4px solid $info-background-color;
+}

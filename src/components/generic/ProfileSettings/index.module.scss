@@ -1,0 +1,14 @@
+@import "../../../styles/mixins";
+@import "../../../styles/variables";
+
+.profile-view {
+  @include row-center;
+  // width: 20vh;
+}
+
+.icon {
+  color: $icons-color;
+  width: 24px;
+  height: 24px;
+  margin: 0 1vw;
+}

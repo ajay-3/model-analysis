@@ -1,0 +1,10 @@
+@import "../../../styles/mixins";
+
+.date-range {
+  @include row-center;
+}
+
+.separator {
+  margin: 0 8px;
+  font-weight: bold;
+}

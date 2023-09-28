@@ -1,0 +1,22 @@
+@import "../../../styles/variables";
+
+@mixin text-mixin() {
+  text-align: center;
+  color: #ffffff;
+  font-family: $font;
+  word-wrap: break-word;
+}
+
+.button {
+  width: 100%;
+  padding: 15px 0;
+  background-color: #08b3f0;
+  @include text-mixin;
+  font-size: medium;
+  font-weight: 600;
+  border: 1px solid #08b3f0;
+  border-radius: 5px;
+  &:hover {
+    cursor: pointer;
+  }
+}

@@ -1,0 +1,10 @@
+@import "../../../styles/mixins";
+
+.header {
+  @include row-center;
+  // margin-top: 2vh;
+  height: 10vh;
+  border-bottom: 2px solid #eceef0;
+  padding: 0 5vw;
+  // margin: 2px;
+}

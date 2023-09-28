@@ -1,0 +1,26 @@
+@import "../../../styles/mixins";
+@import "../../../styles/variables";
+
+.nav-container {
+  @include row-center;
+}
+
+.container {
+  @include col-center;
+}
+
+.success {
+  color: #daffc3;
+}
+
+.progress {
+  color: #fff6e3;
+}
+
+.active {
+  color: #08b3f0;
+}
+
+.inactive {
+  color: #f0f0f0;
+}

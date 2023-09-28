@@ -1,0 +1,40 @@
+@import "../../../../styles/mixins";
+
+.profile-actions {
+  @include row-center;
+  height: 100%;
+}
+
+.icon-style {
+  color: #16161d;
+  width: 40px;
+  height: 40px;
+  margin: 0 0 0 1vw;
+}
+
+.icon {
+  color: #16161d;
+  width: 24px;
+  height: 24px;
+  margin: 0 1vw;
+}
+
+.names {
+  @include col-center;
+  align-items: flex-start;
+  justify-content: center;
+  height: 100%;
+  // padding: 2vh 0;
+  // background-color: red;
+}
+
+.name {
+  padding: 0 0 0 0;
+  margin: 0;
+  line-height: 0.1rem;
+}
+.name {
+  padding: 0 0 0 0;
+  margin: 0;
+  line-height: 0.1rem;
+}

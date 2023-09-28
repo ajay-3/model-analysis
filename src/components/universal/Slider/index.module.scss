@@ -1,0 +1,122 @@
+@import "../../../styles/mixins";
+@import "../../../styles/variables";
+
+.slider-div {
+  @include col-center;
+}
+
+.selected-div {
+  color: #16161d;
+  font-weight: 600;
+  display: flex;
+  width: 340px;
+  justify-content: center;
+  font-family: $font;
+  flex-wrap: wrap;
+  margin-left: 0.75rem;
+  margin-right: 0.75rem;
+}
+
+.inputs-div {
+  @include row-center;
+}
+
+.input-text {
+  width: 4rem;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  padding-left: 0.25rem;
+  padding-right: 0.25rem;
+  border-width: 2px;
+  border-radius: 0.25rem;
+  font-family: $font;
+  color: #0a7aff;
+}
+
+.slider {
+  outline: none;
+  border: none;
+  border-radius: 500px;
+  width: 100%;
+  height: 40px;
+  width: 200px;
+  max-height: 40px;
+  max-width: 100%;
+  margin: 24px 0 16px;
+  transition: box-shadow 0.2s ease-in-out;
+}
+.container {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 22px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Hide the browser's default checkbox */
+.container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+/* Create a custom checkbox */
+.checkmark {
+  position: absolute;
+  top: 3px;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  background-color: #eee;
+  border: 1px solid #0a7aff;
+}
+
+/* On mouse-over, add a grey background color */
+.container:hover input ~ .checkmark {
+  background-color: #ccc;
+}
+
+/* When the checkbox is checked, add a blue background */
+.container input:checked ~ .checkmark {
+  background-color: #2196f3;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the checkmark when checked */
+.container input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Style the checkmark/indicator */
+.container .checkmark:after {
+  left: 9px;
+  top: 5px;
+  width: 7px;
+  height: 13px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+@media screen and (-webkit-min-device-pixel-ratio: 0) {
+  .slider {
+    height: 5px;
+    -webkit-appearance: none;
+    background-color: #ddd;
+  }
+}

@@ -25,7 +25,7 @@ const Slider = (props: any) => {
   }, [props.initialValue]);
 
   return (
-    <div className={styles["slider"]}>
+    <div className={styles["slider-div"]}>
       <div style={{ fontSize: "15px" }} className={styles["selected-div"]}>
         {props.checkBoxVisible === true ? (
           <div className={`${styles.container} gap-1 `}>
@@ -47,7 +47,7 @@ const Slider = (props: any) => {
       <div className={styles["inputs-div"]}>
         <input
           style={{
-            background: `linear-gradient(to right, #211F9F ${
+            background: `linear-gradient(to right, #0a7aff ${
               value * 100
             }%, #ccc ${value * 100}%)`,
             cursor: "pointer",

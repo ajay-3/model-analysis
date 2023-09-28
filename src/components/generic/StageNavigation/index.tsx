@@ -5,10 +5,13 @@ import { useRecoilValue } from "recoil";
 
 import { Stages, parentStages } from "../Stages";
 import styles from "./index.module.scss";
+import { useRouter } from "next/navigation";
 
 const StageNavigation = () => {
   const curExperimentId = useRecoilValue(currentExperimentId);
   const url = useRecoilValue(baseUrl);
+
+  const router = useRouter();
 
   const [sessionDetails, setSessionDetails] = useState();
   const [curStages, setCurStages] = useState(Stages);
@@ -35,6 +38,7 @@ const StageNavigation = () => {
           setSessionDetails(res);
         } else {
           console.log("Session Id Unavailable");
+          router.push("/all-experiments");
         }
       } catch (err) {
         console.log(err);
@@ -42,7 +46,7 @@ const StageNavigation = () => {
     };
     fetchTrainingSessionStatus();
   }, [curExperimentId]);
-  
+
   return (
     <div className={styles["nav-container"]}>
       {parentStages.map((stage_id: string) => (

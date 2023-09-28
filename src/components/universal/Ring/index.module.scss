@@ -1,0 +1,19 @@
+@import "../../../styles/mixins";
+@import "../../../styles/variables";
+
+.text {
+  font-size: medium;
+  font-family: $font;
+  color: #16161d;
+  // color: #0A7AFF;
+}
+
+.ring {
+  @include col-center;
+}
+
+.title {
+  font-size: medium;
+  font-family: $font;
+  color: #16161d;
+}

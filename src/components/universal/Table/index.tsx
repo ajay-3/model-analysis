@@ -22,7 +22,7 @@ const Table: React.FC<GenericTableProps> = ({ data, columns, className }) => {
   return (
     <table className={`${styles.table} ${className}`}>
       <thead>
-        <tr>
+        <tr className={`${styles.Columnsheaders}`}>
           <th key="number">#</th>
           {columns.map((column, index) => (
             <th key={index}>{column.label}</th>
@@ -31,12 +31,11 @@ const Table: React.FC<GenericTableProps> = ({ data, columns, className }) => {
       </thead>
       <tbody>
         {data.map((item, rowIndex) => {
-          // console.log(item);
           return (
-            <tr key={rowIndex}>
+            <tr key={rowIndex} className={`${styles.Columnsheaders}`}>
               <td>{rowIndex + 1}</td>
               {columns.map((column, colIndex) => (
-                <td key={colIndex} className={`${styles[`${column.value}`]}`}>
+                <td key={colIndex}>
                   {column.value == "SessionID" ? (
                     <Link
                       onClick={() => {

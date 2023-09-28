@@ -12,6 +12,7 @@ const StageNavigation = () => {
 
   const [sessionDetails, setSessionDetails] = useState();
   const [curStages, setCurStages] = useState(Stages);
+
   useEffect(() => {
     const fetchTrainingSessionStatus = async () => {
       try {
@@ -41,6 +42,7 @@ const StageNavigation = () => {
     };
     fetchTrainingSessionStatus();
   }, [curExperimentId]);
+  
   return (
     <div className={styles["nav-container"]}>
       {parentStages.map((stage_id: string) => (

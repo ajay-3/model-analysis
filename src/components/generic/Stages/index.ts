@@ -1,4 +1,11 @@
-export const parentStages = ["DD", "MT", "GDSA", "PDSA", "RDA", "PRDA"];
+export const parentStagesStatus: any = {
+  DD: "not_yet_started",
+  MT: "not_yet_started",
+  GDSA: "not_yet_started",
+  PDSA: "not_yet_started",
+  RDA: "not_yet_started",
+  PRDA: "not_yet_started",
+};
 
 export const Stages: any = {
   DD: {
@@ -7,7 +14,7 @@ export const Stages: any = {
     status: "not_yet_started",
     title: "Dataset Download",
     parent: null,
-    children: null,
+    children: ["DD"],
     route: "/all-experiments/model-tracking/dataset-download",
   },
   MT: {
@@ -16,7 +23,7 @@ export const Stages: any = {
     status: "not_yet_started",
     title: "Model Training",
     parent: null,
-    children: ["MT"],
+    children: ["MT", "MU"],
     route: "/all-experiments/model-tracking/model-training",
   },
   MU: {
@@ -25,7 +32,7 @@ export const Stages: any = {
     status: "not_yet_started",
     title: "Model Training",
     parent: "MT",
-    children: null,
+    children: ["MU"],
     route: "/all-experiments/model-tracking/model-training",
   },
   GDSA: {
@@ -34,7 +41,7 @@ export const Stages: any = {
     status: "not_yet_started",
     title: "Golden Analysis",
     parent: null,
-    children: ["GDS", "GDA"],
+    children: ["GDSA", "GDS", "GDA"],
     route: "/all-experiments/model-tracking/golden-analysis",
   },
   GDS: {
@@ -43,7 +50,7 @@ export const Stages: any = {
     status: "not_yet_started",
     title: "Golden Analysis",
     parent: "GDSA",
-    children: null,
+    children: ["GDS"],
     route: "/all-experiments/model-tracking/golden-analysis/model-analysis",
   },
   GDA: {
@@ -52,7 +59,7 @@ export const Stages: any = {
     status: "not_yet_started",
     title: "Golden Analysis",
     parent: "GDSA",
-    children: null,
+    children: ["GDA"],
     route: "/all-experiments/model-tracking/golden-analysis/model-analysis",
   },
   PDSA: {
@@ -61,7 +68,7 @@ export const Stages: any = {
     status: "not_yet_started",
     title: "Platinum Analysis",
     parent: null,
-    children: ["PDS", "PDA"],
+    children: ["PDSA", "PDS", "PDA"],
     route: "/all-experiments/model-tracking/platinum-analysis",
   },
   PDS: {
@@ -70,7 +77,7 @@ export const Stages: any = {
     status: "not_yet_started",
     title: "Platinum Analysis",
     parent: "PDSA",
-    children: null,
+    children: ["PDS"],
     route: "/all-experiments/model-tracking/platinum-analysis/model-analysis",
   },
   PDA: {
@@ -79,7 +86,7 @@ export const Stages: any = {
     status: "not_yet_started",
     title: "Platinum Analysis",
     parent: "PDSA",
-    children: null,
+    children: ["PDA"],
     route: "/all-experiments/model-tracking/platinum-analysis/model-analysis",
   },
   RDA: {
@@ -88,7 +95,7 @@ export const Stages: any = {
     status: "not_yet_started",
     title: "Replica Deployment",
     parent: null,
-    children: ["RD"],
+    children: ["RDA", "RD"],
     route: "/all-experiments/model-tracking/replica-deployment",
   },
   RD: {
@@ -97,7 +104,7 @@ export const Stages: any = {
     status: "not_yet_started",
     title: "Replica Deployment",
     parent: "RDA",
-    children: null,
+    children: ["RD"],
     route: "/all-experiments/model-tracking/replica-deployment",
   },
   PRDA: {
@@ -106,7 +113,7 @@ export const Stages: any = {
     status: "not_yet_started",
     title: "Production Deployment",
     parent: null,
-    children: ["PRD"],
+    children: ["PRDA", "PRD"],
     route: "/all-experiments/model-tracking/production-deployment",
   },
   PRD: {
@@ -115,7 +122,7 @@ export const Stages: any = {
     status: "not_yet_started",
     title: "Production Deployment",
     parent: "PRDA",
-    children: null,
+    children: ["PRD"],
     route: "/all-experiments/model-tracking/production-deployment",
   },
 };

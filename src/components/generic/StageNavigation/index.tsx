@@ -3,7 +3,7 @@ import { baseUrl, currentExperimentId } from "@/src/store/atoms/AllExperiments";
 import { useEffect, useState } from "react";
 import { useRecoilValue } from "recoil";
 
-import { Stages, parentStages } from "../Stages";
+import { Stages, parentStagesStatus } from "../Stages";
 import styles from "./index.module.scss";
 import { useRouter } from "next/navigation";
 
@@ -15,6 +15,7 @@ const StageNavigation = () => {
 
   const [sessionDetails, setSessionDetails] = useState();
   const [curStages, setCurStages] = useState(Stages);
+  const [curParentState, setCurParentState] = useState(parentStagesStatus);
 
   useEffect(() => {
     const fetchTrainingSessionStatus = async () => {
@@ -31,8 +32,26 @@ const StageNavigation = () => {
           const tempStages: any = curStages;
 
           res["stages"].forEach((element: any) => {
-            tempStages[element["Stage"]]["status"] = element["Status"];
+            if (element["Stage"] in tempStages) {
+              tempStages[element["Stage"]]["status"] = element["Status"];
+            }
           });
+
+          const tempParentStages: any = curStages;
+          Object.keys(parentStagesStatus).forEach((key: any) => {
+            tempParentStages[key] = "complete";
+            for (let i = 0; i < tempStages[key]["children"].length; i++) {
+              console.log(tempStages[key]["children"][i]);
+              if (tempStages[key]["children"][i] == "not-yet-started") {
+                tempParentStages[key] = "not-yet-started";
+                break;
+              } else if (tempStages[key]["children"][i] == "in-progress") {
+                tempParentStages[key] = "in-progress";
+                break;
+              }
+            }
+          });
+          console.log(tempParentStages);
           console.log(tempStages);
           setCurStages(tempStages);
           setSessionDetails(res);
@@ -49,10 +68,10 @@ const StageNavigation = () => {
 
   return (
     <div className={styles["nav-container"]}>
-      {parentStages.map((stage_id: string) => (
-        <div key={stage_id} className={`${styles["container"]}`}>
-          <p>Step {Stages[stage_id].step}</p>
-          <p>{Stages[stage_id].title}</p>
+      {Object.keys(parentStagesStatus).map((stage_id: string) => (
+        <div key={stage_id} className={styles["container"]}>
+          <span>Step {Stages[stage_id].step}</span>
+          <span>{Stages[stage_id].title}</span>
         </div>
       ))}
     </div>

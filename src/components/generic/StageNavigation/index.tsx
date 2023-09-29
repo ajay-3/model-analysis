@@ -1,5 +1,9 @@
 "use client";
-import { baseUrl, currentExperimentId, masterTrainingSessionState } from "@/src/store/atoms/AllExperiments";
+import {
+  baseUrl,
+  currentExperimentId,
+  masterTrainingSessionState,
+} from "@/src/store/atoms/AllExperiments";
 import { useEffect, useState } from "react";
 import { useRecoilValue } from "recoil";
 
@@ -9,11 +13,13 @@ import { useRouter } from "next/navigation";
 import TrainingSession from "@/src/components/generic/TrainingSessionTable";
 
 const StageNavigation = () => {
-  const curExperimentId:any = useRecoilValue(currentExperimentId);
-  const curMasterProject:any = useRecoilValue(masterTrainingSessionState)
-  console.log(curMasterProject[curExperimentId])
-  const keyValueTableData:any = Object.entries(curMasterProject[curExperimentId]['training_session_details'])
-  console.log(keyValueTableData)
+  const curExperimentId: any = useRecoilValue(currentExperimentId);
+  const curMasterProject: any = useRecoilValue(masterTrainingSessionState);
+  // console.log(curMasterProject[curExperimentId]);
+  const keyValueTableData: any = Object.entries(
+    curMasterProject[curExperimentId]["training_session_details"]
+  );
+  // console.log(keyValueTableData);
   const url = useRecoilValue(baseUrl);
 
   const router = useRouter();
@@ -36,26 +42,31 @@ const StageNavigation = () => {
           const res = await result.json();
           const tempStages: any = curStages;
 
-          // res["stages"].forEach((element: any) => {
-          //   if (element["Stage"] in tempStages) {
-          //     tempStages[element["Stage"]]["status"] = element["Status"];
-          //   }
-          // });
+          res["stages"].forEach((element: any) => {
+            if (element["Stage"] in tempStages) {
+              tempStages[element["Stage"]]["status"] = element["Status"];
+            }
+          });
 
-          // const tempParentStages: any = curStages;
-          // Object.keys(parentStagesStatus).forEach((key: any) => {
-          //   tempParentStages[key] = "complete";
-          //   for (let i = 0; i < tempStages[key]["children"].length; i++) {
-          //     console.log(tempStages[key]["children"][i]);
-          //     if (tempStages[key]["children"][i] == "not-yet-started") {
-          //       tempParentStages[key] = "not-yet-started";
-          //       break;
-          //     } else if (tempStages[key]["children"][i] == "in-progress") {
-          //       tempParentStages[key] = "in-progress";
-          //       break;
-          //     }
-          //   }
-          // });
+          const tempParentStages: any = curParentState;
+          Object.keys(parentStagesStatus).forEach((key: any) => {
+            tempParentStages[key] = "complete";
+            for (let i = 0; i < tempStages[key]["children"].length; i++) {
+              if (
+                tempStages[tempStages[key]["children"][i]]["status"] ==
+                "not_yet_started"
+              ) {
+                tempParentStages[key] = "not-yet-started";
+                break;
+              } else if (
+                tempStages[tempStages[key]["children"][i]]["status"] ==
+                "in-progress"
+              ) {
+                tempParentStages[key] = "in-progress";
+                break;
+              }
+            }
+          });
           setCurStages(tempStages);
           setSessionDetails(res);
         } else {
@@ -70,18 +81,20 @@ const StageNavigation = () => {
 
   return (
     <div>
-       <div className={styles["nav-container"]}>
-      {Object.keys(parentStagesStatus).map((stage_id: string) => (
-        <div key={stage_id} className={styles["container"]}>
-          <p>Step {Stages[stage_id].step}</p>
-          <p>{Stages[stage_id].title}</p>
-        </div>
-      ))}
+      <div className={styles["nav-container"]}>
+        {Object.keys(parentStagesStatus).map((stage_id: string) => (
+          <div key={stage_id} className={styles["container"]}>
+            <p>Step {Stages[stage_id].step}</p>
+            <p>{Stages[stage_id].title}</p>
+          </div>
+        ))}
       </div>
 
-      <TrainingSession  header="Training Session Details" keyValueTableData = {keyValueTableData}/>
-
-    </div>   
+      <TrainingSession
+        header="Training Session Details"
+        keyValueTableData={keyValueTableData}
+      />
+    </div>
   );
 };
 

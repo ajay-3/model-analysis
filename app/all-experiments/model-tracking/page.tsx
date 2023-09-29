@@ -17,9 +17,9 @@ const ModelTracking = () => {
     <div>
       <Header />
       <div className={styles['modelTrackingHeader']}>
-        <div>
-          <h4>Experiment ID:</h4>
-          <span>{curExperimentId}</span>
+        <div className={styles["buttonAlignment"]}>
+          <h4>Experiment ID :</h4>
+          <p>{curExperimentId}</p>
         </div>
         <div className={styles["buttonAlignment"]}>
             <Button variant="primary" className={styles["buttonPrimary"]}>

@@ -1,8 +1,7 @@
-import { useEffect, useState } from "react";
 import styles from "./trainingSession.module.scss";
 
 
-const TrainingSession = ({header,keyValueTableData}:any) =>{
+const TrainingSession = ({type,header,keyValueTableData}:any) =>{
     return (
         <div className={styles["keyValueTableContainer"]}>
           <div>

@@ -11,6 +11,7 @@ import { Stages, parentStagesStatus } from "../Stages";
 import styles from "./index.module.scss";
 import { useRouter } from "next/navigation";
 import TrainingSession from "@/src/components/generic/TrainingSessionTable";
+import Simulation from "@/src/components/generic/Simulation";
 
 const StageNavigation = () => {
   const curExperimentId: any = useRecoilValue(currentExperimentId);
@@ -27,6 +28,9 @@ const StageNavigation = () => {
   const [sessionDetails, setSessionDetails] = useState();
   const [curStages, setCurStages] = useState(Stages);
   const [curParentState, setCurParentState] = useState(parentStagesStatus);
+  const [curSelectedState,setCurSelectedState] = useState('');
+
+  const modelDetails = ['jhnsrda_model_1','jhnsrda_model_2','jhnsrda_model_3','jhnsrda_model_4']
 
   useEffect(() => {
     const fetchTrainingSessionStatus = async () => {
@@ -56,7 +60,7 @@ const StageNavigation = () => {
                 tempStages[tempStages[key]["children"][i]]["status"] ==
                 "not_yet_started"
               ) {
-                tempParentStages[key] = "not-yet-started";
+                tempParentStages[key] = "not_yet_started";
                 break;
               } else if (
                 tempStages[tempStages[key]["children"][i]]["status"] ==
@@ -68,7 +72,10 @@ const StageNavigation = () => {
             }
           });
           setCurStages(tempStages);
+          setCurParentState(tempParentStages);
           setSessionDetails(res);
+
+          console.log(curParentState)
         } else {
           router.push("/all-experiments");
         }
@@ -79,21 +86,35 @@ const StageNavigation = () => {
     fetchTrainingSessionStatus();
   }, [curExperimentId]);
 
+
+  let returnCurState = (id:string)=>{
+    return curParentState[id] == "complete" ? styles['completed'] : curParentState[id] == "in-progress" ? styles['inProgress'] : ''  ;
+  }
+
+  let fetchStateData = (id:string)=>{
+    setCurSelectedState(id)
+  }
+
   return (
     <div>
       <div className={styles["nav-container"]}>
         {Object.keys(parentStagesStatus).map((stage_id: string) => (
-          <div key={stage_id} className={styles["container"]}>
+          <div key={stage_id} className={`${styles["container"]} ${returnCurState(stage_id)}`} onClick={()=>fetchStateData(stage_id)}> 
             <p>Step {Stages[stage_id].step}</p>
             <p>{Stages[stage_id].title}</p>
           </div>
         ))}
       </div>
 
-      <TrainingSession
+
+      {/* <TrainingSession
+        type={curSelectedState}
         header="Training Session Details"
         keyValueTableData={keyValueTableData}
-      />
+      /> */}
+
+      <Simulation type={curSelectedState} modelDetails={modelDetails}/>
+
     </div>
   );
 };

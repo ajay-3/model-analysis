@@ -26,16 +26,31 @@
     }
   }
 
-  &.active p{
+  &.completed{
     background-color: #daffc3;
     color: #569f25;
     font-weight: 700;
+    p {
+      color: #569f25;
+    }
   }
 
-  &.inProgress p{
+  &.active {
+    background-color: #0ab3f0;
+    color: #fff;
+    font-weight: 700;
+    p {
+      color: #fff;
+    }
+  }
+
+  &.inProgress  {
     background-color: #fff6e3;
     color: #ffaa01;
     font-weight: 700;
+    p {
+      color: #ffaa01;
+    }
   }
 }
 

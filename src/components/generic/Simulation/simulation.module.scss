@@ -1,0 +1,68 @@
+.simulationMainContainer{
+    margin: 2vh 5vw;
+}
+
+.toggleContainer{
+    display: flex;
+    background-color: lightgrey;
+    color: grey;
+    width: 25%;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.inactive{
+    padding: 6px 8px;
+    width: 50%;
+    margin: 0;
+    cursor: pointer;
+}
+
+.active{
+    background-color: #fff;
+    color: #0ab3f0;
+    padding: 6px 8px;
+    width: 50%;
+    border-radius: 10px;
+    box-shadow: 3px 3px 3px #ccc;
+    margin: 0;
+    cursor: pointer;
+}
+
+.selectionContainer{
+    border: 1px solid grey;
+    margin: 2vh 0;
+    padding: 4vh 2vw;
+    border-radius: 10px;
+    h4{margin: 0 0 2vh 0;}
+}
+
+.horizontalAlign{
+    display: flex;
+}
+
+.checkBoxDiv{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-right: 40px;
+    border: 1px solid grey;
+    border-radius: 10px;
+    padding: 4px 12px;
+
+    input{
+        margin-right: 12px;
+    }
+}
+
+.buttonPrimary{
+    background-color: #006aff;
+    color: #fff;
+    padding: 8px 16px;
+    margin-right: 6%;
+    font-size: 14px;
+    outline: none;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
